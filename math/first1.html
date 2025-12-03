@@ -1,0 +1,561 @@
+<!DOCTYPE HTML>
+<html lang="en" class="light sidebar-visible" dir="ltr">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>前言I - 万物之理：从计数到宇宙的数学地图</title>
+
+
+        <!-- Custom HTML head -->
+        <!-- theme/head.hbs -->
+        <script>
+        window.MathJax = {
+          tex: {
+            // 同时支持 $...$ 和 \( ... \) 作为行内公式
+            inlineMath: [['$', '$'], ['\(', '\)']],
+            // 同时支持 $$...$$ 和 \[ ... \] 作为块级公式
+            displayMath: [['$$', '$$'], ['\[', '\]']],
+            processEscapes: true,
+            // 如果想启用更多扩展（例如 mhchem 等），可以在这里添加 packages
+            // packages: {'[+]': ['mhchem']}
+          },
+          svg: {
+            fontCache: 'global'
+          }
+        };
+        </script>
+        
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff">
+
+        <link rel="icon" href="../favicon.svg">
+        <link rel="shortcut icon" href="../favicon.png">
+        <link rel="stylesheet" href="../css/variables.css">
+        <link rel="stylesheet" href="../css/general.css">
+        <link rel="stylesheet" href="../css/chrome.css">
+        <link rel="stylesheet" href="../css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" id="highlight-css" href="../highlight.css">
+        <link rel="stylesheet" id="tomorrow-night-css" href="../tomorrow-night.css">
+        <link rel="stylesheet" id="ayu-highlight-css" href="../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        <link rel="stylesheet" href="../theme/custom.css">
+        <link rel="stylesheet" href="../theme/pagetoc.css">
+
+
+        <!-- Provide site root and default themes to javascript -->
+        <script>
+            const path_to_root = "../";
+            const default_light_theme = "light";
+            const default_dark_theme = "navy";
+            window.path_to_searchindex_js = "../searchindex.js";
+        </script>
+        <!-- Start loading toc.js asap -->
+        <script src="../toc.js"></script>
+    </head>
+    <body>
+    <div id="mdbook-help-container">
+        <div id="mdbook-help-popup">
+            <h2 class="mdbook-help-title">Keyboard shortcuts</h2>
+            <div>
+                <p>Press <kbd>←</kbd> or <kbd>→</kbd> to navigate between chapters</p>
+                <p>Press <kbd>S</kbd> or <kbd>/</kbd> to search in the book</p>
+                <p>Press <kbd>?</kbd> to show this help</p>
+                <p>Press <kbd>Esc</kbd> to hide this help</p>
+            </div>
+        </div>
+    </div>
+    <div id="body-container">
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                let theme = localStorage.getItem('mdbook-theme');
+                let sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            const default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? default_dark_theme : default_light_theme;
+            let theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            const html = document.documentElement;
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add("js");
+        </script>
+
+        <input type="checkbox" id="sidebar-toggle-anchor" class="hidden">
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            let sidebar = null;
+            const sidebar_toggle = document.getElementById("sidebar-toggle-anchor");
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+                sidebar_toggle.checked = false;
+            }
+            if (sidebar === 'visible') {
+                sidebar_toggle.checked = true;
+            } else {
+                html.classList.remove('sidebar-visible');
+            }
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <!-- populated by js -->
+            <mdbook-sidebar-scrollbox class="sidebar-scrollbox"></mdbook-sidebar-scrollbox>
+            <noscript>
+                <iframe class="sidebar-iframe-outer" src="../toc.html"></iframe>
+            </noscript>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle">
+                <div class="sidebar-resize-indicator"></div>
+            </div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky">
+                    <div class="left-buttons">
+                        <label id="sidebar-toggle" class="icon-button" for="sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </label>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="default_theme">Auto</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search (`/`)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="/ s" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">万物之理：从计数到宇宙的数学地图</h1>
+
+                    <div class="right-buttons">
+                        <a href="../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <div class="search-wrapper">
+                            <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                            <div class="spinner-wrapper">
+                                <i class="fa fa-spinner fa-spin"></i>
+                            </div>
+                        </div>
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/katex.min.css">
+<h1 id="-数学分析下册前言"><a class="header" href="#-数学分析下册前言">📖 <strong>数学分析下册·前言</strong></a></h1>
+<hr />
+<div style="text-align: center; margin: 60px 0; font-size: 22px;">
+<h1 id="preface"><a class="header" href="#preface"><strong>PREFACE</strong></a></h1>
+<h2 id="mathematical-analysis-volume-ii"><a class="header" href="#mathematical-analysis-volume-ii"><strong>Mathematical Analysis Volume II</strong></a></h2>
+<hr />
+<p><strong>多元微积分的世界</strong><br />
+<strong>无穷维空间的探索</strong><br />
+<strong>从平面到空间，从有限到无穷</strong></p>
+<hr />
+<p><em>"The only way to learn mathematics is to do mathematics."</em><br />
+<em>—— Paul Halmos</em></p>
+<p><strong>"学习数学的唯一方法就是做数学。"</strong><br />
+<strong>—— 保罗·哈尔莫斯</strong></p>
+<hr />
+</div>
+<hr />
+<h2 id="致读者"><a class="header" href="#致读者"><strong>致读者</strong></a></h2>
+<h3 id="欢迎回来"><a class="header" href="#欢迎回来"><strong>欢迎回来</strong></a></h3>
+<p>当你翻开数学分析下册的第一页，你已经不再是当初那个对 <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6667em;vertical-align:-0.0833em;"></span><span class="mord mathnormal">ε</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord mathnormal" style="margin-right:0.03785em;">δ</span></span></span></span> 语言感到陌生的新手。你经历了上册的洗礼，掌握了单变量微积分的精髓，建立了严格的分析学思维。</p>
+<p><strong>你准备好了。</strong></p>
+<p>现在，让我们一起迈向更广阔的天地——<strong>多元函数的微积分世界</strong>。</p>
+<hr />
+<h3 id="从一维到多维的飞跃"><a class="header" href="#从一维到多维的飞跃"><strong>从一维到多维的飞跃</strong></a></h3>
+<p>如果说数学分析上册是学习"线"上的数学，那么下册就是探索"面"与"体"的艺术。</p>
+<p><strong>一元函数</strong>告诉我们如何描述曲线的切线、面积；<br />
+<strong>多元函数</strong>则让我们理解曲面的法线、体积、通量。</p>
+<p><strong>这不仅是维度的增加，更是思维方式的革命。</strong></p>
+<ul>
+<li><strong>偏导数</strong>代替了导数，但方向导数告诉我们：导数不再唯一</li>
+<li><strong>重积分</strong>代替了定积分，但曲面积分和曲线积分引入了全新的几何直观</li>
+<li><strong>Green公式、Gauss公式、Stokes公式</strong>将微分与积分以惊人的方式联系起来</li>
+</ul>
+<p><strong>你会发现：高维世界比一维世界更加丰富、更加微妙、也更加美丽。</strong></p>
+<hr />
+<h3 id="下册的主要内容"><a class="header" href="#下册的主要内容"><strong>下册的主要内容</strong></a></h3>
+<p>数学分析下册通常包含以下核心主题：</p>
+<h4 id="第一部分多元函数微分学"><a class="header" href="#第一部分多元函数微分学"><strong>第一部分：多元函数微分学</strong></a></h4>
+<ul>
+<li><strong>第一章</strong>：多元函数的极限与连续性</li>
+<li><strong>第二章</strong>：偏导数与全微分</li>
+<li><strong>第三章</strong>：多元函数的微分法则</li>
+<li><strong>第四章</strong>：隐函数定理与反函数定理</li>
+<li><strong>第五章</strong>：多元函数的极值与条件极值（Lagrange乘数法）</li>
+<li><strong>第六章</strong>：方向导数与梯度</li>
+</ul>
+<h4 id="第二部分多元函数积分学"><a class="header" href="#第二部分多元函数积分学"><strong>第二部分：多元函数积分学</strong></a></h4>
+<ul>
+<li><strong>第七章</strong>：重积分（二重积分、三重积分）</li>
+<li><strong>第八章</strong>：曲线积分（第一型、第二型）</li>
+<li><strong>第九章</strong>：曲面积分（第一型、第二型）</li>
+<li><strong>第十章</strong>：场论初步（Green公式、Gauss公式、Stokes公式）</li>
+</ul>
+<h4 id="第三部分无穷级数的深入"><a class="header" href="#第三部分无穷级数的深入"><strong>第三部分：无穷级数的深入</strong></a></h4>
+<ul>
+<li><strong>第十一章</strong>：含参变量积分</li>
+<li><strong>第十二章</strong>：Fourier级数</li>
+<li><strong>第十三章</strong>：Fourier变换初步</li>
+</ul>
+<h4 id="第四部分部分教材"><a class="header" href="#第四部分部分教材"><strong>第四部分（部分教材）</strong>：</a></h4>
+<ul>
+<li><strong>微分几何初步</strong></li>
+<li><strong>场论与微分形式</strong></li>
+<li><strong>广义积分的深入理论</strong></li>
+</ul>
+<hr />
+<h3 id="学习下册你会遇到什么"><a class="header" href="#学习下册你会遇到什么"><strong>学习下册，你会遇到什么？</strong></a></h3>
+<h4 id="1-更高的抽象层次"><a class="header" href="#1-更高的抽象层次"><strong>1. 更高的抽象层次</strong></a></h4>
+<p>上册中，函数 <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8889em;vertical-align:-0.1944em;"></span><span class="mord mathnormal" style="margin-right:0.10764em;">f</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">:</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6889em;"></span><span class="mord mathbb">R</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">→</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6889em;"></span><span class="mord mathbb">R</span></span></span></span> 是你的主角。<br />
+下册中，<span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8889em;vertical-align:-0.1944em;"></span><span class="mord mathnormal" style="margin-right:0.10764em;">f</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">:</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6889em;"></span><span class="mord"><span class="mord mathbb">R</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.6644em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">n</span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">→</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6889em;"></span><span class="mord"><span class="mord mathbb">R</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.6644em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">m</span></span></span></span></span></span></span></span></span></span></span> 成为常态。</p>
+<p>你需要习惯：</p>
+<ul>
+<li><strong>向量值函数</strong></li>
+<li><strong>多变量同时变化</strong></li>
+<li><strong>方向的概念</strong>（不再只有"左"和"右"）</li>
+</ul>
+<hr />
+<h4 id="2-更强的几何直观"><a class="header" href="#2-更强的几何直观"><strong>2. 更强的几何直观</strong></a></h4>
+<p>上册主要是代数计算，下册则离不开几何图像。</p>
+<ul>
+<li>偏导数的几何意义是什么？</li>
+<li>梯度为什么指向"最陡"的方向？</li>
+<li>Green公式为什么将"区域上的二重积分"转化为"边界上的曲线积分"？</li>
+</ul>
+<p><strong>没有几何直观，你将寸步难行。</strong></p>
+<hr />
+<h4 id="3-更繁琐的计算"><a class="header" href="#3-更繁琐的计算"><strong>3. 更繁琐的计算</strong></a></h4>
+<p>重积分的计算、换元、极坐标、柱坐标、球坐标——每一个都是"算力"的考验。</p>
+<p>曲线积分和曲面积分更是如此。</p>
+<p><strong>但请记住</strong>：技巧是为思想服务的。不要沉溺于计算，要理解背后的思想。</p>
+<hr />
+<h4 id="4-更深刻的定理"><a class="header" href="#4-更深刻的定理"><strong>4. 更深刻的定理</strong></a></h4>
+<ul>
+<li><strong>隐函数定理</strong>：告诉我们何时方程 <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.13889em;">F</span><span class="mopen">(</span><span class="mord mathnormal">x</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.03588em;">y</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">0</span></span></span></span> 能确定 <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.1944em;"></span><span class="mord mathnormal" style="margin-right:0.03588em;">y</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.10764em;">f</span><span class="mopen">(</span><span class="mord mathnormal">x</span><span class="mclose">)</span></span></span></span></li>
+<li><strong>反函数定理</strong>：给出变量替换的条件（Jacobi行列式）</li>
+<li><strong>Green公式</strong>：联结二重积分与曲线积分</li>
+<li><strong>Gauss公式</strong>：将三重积分转化为曲面积分（散度定理）</li>
+<li><strong>Stokes公式</strong>：联结曲面积分与曲线积分（旋度定理）</li>
+</ul>
+<p><strong>这些定理是整个下册的灵魂。</strong></p>
+<hr />
+<h3 id="为什么学习数学分析下册"><a class="header" href="#为什么学习数学分析下册"><strong>为什么学习数学分析下册？</strong></a></h3>
+<h4 id="1-它是物理学的语言"><a class="header" href="#1-它是物理学的语言"><strong>1. 它是物理学的语言</strong></a></h4>
+<ul>
+<li><strong>经典力学</strong>：Lagrange力学、Hamilton力学依赖于多元微积分</li>
+<li><strong>电磁学</strong>：Maxwell方程组本质上是场论（Green、Gauss、Stokes公式）</li>
+<li><strong>流体力学</strong>：Navier-Stokes方程涉及向量场的散度与旋度</li>
+<li><strong>量子力学</strong>：波函数是无穷维空间中的"点"</li>
+</ul>
+<p><strong>没有多元微积分，你无法真正理解物理学。</strong></p>
+<hr />
+<h4 id="2-它是工程技术的基础"><a class="header" href="#2-它是工程技术的基础"><strong>2. 它是工程技术的基础</strong></a></h4>
+<ul>
+<li><strong>计算机图形学</strong>：曲面参数化、法向量计算</li>
+<li><strong>机器学习</strong>：梯度下降法、反向传播（就是多元函数的链式法则！）</li>
+<li><strong>优化理论</strong>：Lagrange乘数法、凸优化</li>
+<li><strong>信号处理</strong>：Fourier变换、滤波器设计</li>
+</ul>
+<p><strong>现代科技的背后，都有多元微积分的身影。</strong></p>
+<hr />
+<h4 id="3-它是高等数学的门票"><a class="header" href="#3-它是高等数学的门票"><strong>3. 它是高等数学的门票</strong></a></h4>
+<ul>
+<li><strong>微分几何</strong>：研究曲线、曲面的几何性质</li>
+<li><strong>偏微分方程</strong>：数学物理方程的核心</li>
+<li><strong>泛函分析</strong>：无穷维空间中的"微积分"</li>
+<li><strong>黎曼几何</strong>：广义相对论的数学基础</li>
+</ul>
+<p><strong>如果你想继续深造，下册是必须跨越的门槛。</strong></p>
+<hr />
+<h3 id="如何学好数学分析下册"><a class="header" href="#如何学好数学分析下册"><strong>如何学好数学分析下册？</strong></a></h3>
+<h4 id="1-巩固上册基础"><a class="header" href="#1-巩固上册基础"><strong>1. 巩固上册基础</strong></a></h4>
+<p>下册大量使用上册的概念：</p>
+<ul>
+<li>极限、连续性</li>
+<li>导数、微分</li>
+<li>积分、级数</li>
+</ul>
+<p><strong>如果上册不牢，下册将举步维艰。</strong></p>
+<p>建议：</p>
+<ul>
+<li>复习上册的核心定理</li>
+<li>确保对 <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6667em;vertical-align:-0.0833em;"></span><span class="mord mathnormal">ε</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord mathnormal" style="margin-right:0.03785em;">δ</span></span></span></span> 语言熟练</li>
+<li>回顾泰勒展开、级数判敛法</li>
+</ul>
+<hr />
+<h4 id="2-培养几何直观"><a class="header" href="#2-培养几何直观"><strong>2. 培养几何直观</strong></a></h4>
+<p>多元微积分离不开图像：</p>
+<ul>
+<li><strong>画图</strong>：尽可能画出函数的图像、等高线、梯度方向</li>
+<li><strong>想象</strong>：培养三维空间的想象力</li>
+<li><strong>使用软件</strong>：Mathematica、MATLAB、Python（Matplotlib）可视化</li>
+</ul>
+<p><strong>看到公式时，脑海中应该浮现几何图像。</strong></p>
+<hr />
+<h4 id="3-重视定理的证明"><a class="header" href="#3-重视定理的证明"><strong>3. 重视定理的证明</strong></a></h4>
+<p>下册的定理更加深刻：</p>
+<ul>
+<li>隐函数定理的证明用到了压缩映像原理</li>
+<li>Stokes公式的证明需要微分形式</li>
+<li>Fourier级数的收敛性证明涉及Dirichlet核</li>
+</ul>
+<p><strong>不要满足于记住结论，要理解证明的思路。</strong></p>
+<hr />
+<h4 id="4-大量练习计算"><a class="header" href="#4-大量练习计算"><strong>4. 大量练习计算</strong></a></h4>
+<p>虽然思想重要，但计算能力也不可缺：</p>
+<ul>
+<li>二重积分、三重积分的各种坐标系</li>
+<li>曲线积分、曲面积分的参数化</li>
+<li>Green、Gauss、Stokes公式的应用</li>
+</ul>
+<p><strong>熟能生巧，计算能力需要大量练习。</strong></p>
+<hr />
+<h4 id="5-联系实际应用"><a class="header" href="#5-联系实际应用"><strong>5. 联系实际应用</strong></a></h4>
+<p>下册的许多概念来自物理：</p>
+<ul>
+<li>梯度：温度场中温度升高最快的方向</li>
+<li>散度：流体的"源"与"汇"</li>
+<li>旋度：流体的"旋转"</li>
+<li>Gauss公式：电场的通量与电荷量的关系</li>
+</ul>
+<p><strong>理解物理意义，会让数学更有生命力。</strong></p>
+<hr />
+<h3 id="学习建议"><a class="header" href="#学习建议"><strong>学习建议</strong></a></h3>
+<h4 id="时间安排"><a class="header" href="#时间安排"><strong>时间安排</strong></a></h4>
+<ul>
+<li><strong>第一遍</strong>：通读教材，理解概念，跟随课堂进度</li>
+<li><strong>第二遍</strong>：精读定理证明，做习题巩固</li>
+<li><strong>第三遍</strong>：查漏补缺，总结归纳，准备考试</li>
+</ul>
+<p><strong>不要奢望一遍就懂，数学分析需要反复咀嚼。</strong></p>
+<hr />
+<h4 id="心理准备"><a class="header" href="#心理准备"><strong>心理准备</strong></a></h4>
+<p>下册的难度<strong>不亚于</strong>上册：</p>
+<ul>
+<li>偏导数的概念比导数微妙</li>
+<li>重积分的计算比定积分繁琐</li>
+<li>场论的三大公式比牛顿-莱布尼茨公式抽象</li>
+</ul>
+<p><strong>你会遇到困难，会感到挫折，这很正常。</strong></p>
+<p>但请记住：</p>
+<blockquote>
+<p><strong>"落寞的是这一段困顿时光，而不是你依然有着千万种可能的人生。"</strong></p>
+</blockquote>
+<p><strong>坚持下去，你会看到不一样的风景。</strong></p>
+<hr />
+<h3 id="本书的特色"><a class="header" href="#本书的特色"><strong>本书的特色</strong></a></h3>
+<p>本书（数学分析下册整理）延续上册的风格，提供：</p>
+<h4 id="1-完整的知识体系"><a class="header" href="#1-完整的知识体系"><strong>1. 完整的知识体系</strong></a></h4>
+<ul>
+<li>从多元函数的基础到场论的三大公式</li>
+<li>从重积分到Fourier级数</li>
+<li>逻辑清晰，层层递进</li>
+</ul>
+<hr />
+<h4 id="2-丰富的例题与反例"><a class="header" href="#2-丰富的例题与反例"><strong>2. 丰富的例题与反例</strong></a></h4>
+<ul>
+<li>典型例题：掌握基本技巧</li>
+<li>经典反例：理解概念的边界</li>
+<li>综合应用：联结不同章节</li>
+</ul>
+<hr />
+<h4 id="3-深入的定理证明"><a class="header" href="#3-深入的定理证明"><strong>3. 深入的定理证明</strong></a></h4>
+<ul>
+<li>不仅给出证明，还解释"为什么这样证"</li>
+<li>标注证明的关键步骤</li>
+<li>指出常见误区</li>
+</ul>
+<hr />
+<h4 id="4-详实的附录"><a class="header" href="#4-详实的附录"><strong>4. 详实的附录</strong></a></h4>
+<ul>
+<li>公式速查表</li>
+<li>坐标变换公式</li>
+<li>场论公式汇总</li>
+<li>历年考题精选</li>
+</ul>
+<hr />
+<h4 id="5-贴心的学习建议"><a class="header" href="#5-贴心的学习建议"><strong>5. 贴心的学习建议</strong></a></h4>
+<ul>
+<li>每章开头：学习目标、重点难点</li>
+<li>每节结尾：小结、易错点</li>
+<li>每章结尾：综合练习、思考题</li>
+</ul>
+<hr />
+<h3 id="致谢"><a class="header" href="#致谢"><strong>致谢</strong></a></h3>
+<p>感谢所有为数学分析发展做出贡献的数学家：</p>
+<ul>
+<li><strong>Euler、Lagrange、Laplace</strong>：多元微积分的奠基人</li>
+<li><strong>Green、Gauss、Stokes</strong>：场论三大公式的命名者</li>
+<li><strong>Fourier</strong>：Fourier分析的创始人</li>
+<li><strong>Riemann</strong>：黎曼积分与黎曼几何的开创者</li>
+</ul>
+<p>感谢编写优秀教材的学者们：华罗庚、陈建功、卓里奇、Rudin、Apostol……</p>
+<p>感谢在讲台上辛勤耕耘的老师们，感谢那些深夜陪你奋战的同学们。</p>
+<hr />
+<h3 id="写在最后"><a class="header" href="#写在最后"><strong>写在最后</strong></a></h3>
+<p>数学分析下册，是你数学旅程中的又一座高峰。</p>
+<p><strong>山路崎岖，但登顶后的风景无与伦比。</strong></p>
+<p>当你终于理解Stokes公式的深刻含义，<br />
+当你用Lagrange乘数法优雅地解决极值问题，<br />
+当你看到Fourier级数将复杂函数分解为简单的三角函数——</p>
+<p>你会感激那个不放弃的自己。</p>
+<hr />
+<p><strong>功不唐捐，玉汝于成。</strong></p>
+<p>愿你在多元微积分的世界中，<br />
+找到数学之美，<br />
+感受思维之力，<br />
+收获成长之喜。</p>
+<hr />
+<p><strong>前路漫漫，但我们与你同行。</strong></p>
+<p><strong>加油，探索者！</strong></p>
+<hr />
+<div style="text-align: right; margin-top: 80px; font-style: italic;">
+<p><strong>编者</strong><br />
+<strong>2024年</strong></p>
+</div>
+<hr />
+<div style="text-align: center; margin-top: 100px; font-size: 20px;">
+<h1 id="----"><a class="header" href="#----">🌍 ∇ ∫∫ ∮ 🔬</a></h1>
+<p><strong>The Adventure Continues</strong></p>
+<p><strong>多元世界，等你探索</strong></p>
+<hr />
+<p><em>"In mathematics, you don't understand things. You just get used to them."</em><br />
+<em>—— John von Neumann</em></p>
+<p><strong>"在数学中，你不是理解事物，而是习惯它们。"</strong><br />
+<strong>—— 约翰·冯·诺依曼</strong></p>
+<hr />
+<p><strong>数学分析下册·开启</strong></p>
+</div>
+<hr />
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../math/F2.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next prefetch" href="../math/first2.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../math/F2.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next prefetch" href="../math/first2.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+        <!-- Livereload script (if served using the cli tool) -->
+        <script>
+            const wsProtocol = location.protocol === 'https:' ? 'wss:' : 'ws:';
+            const wsAddress = wsProtocol + "//" + location.host + "/" + "__livereload";
+            const socket = new WebSocket(wsAddress);
+            socket.onmessage = function (event) {
+                if (event.data === "reload") {
+                    socket.close();
+                    location.reload();
+                }
+            };
+
+            window.onbeforeunload = function() {
+                socket.close();
+            }
+        </script>
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="../elasticlunr.min.js"></script>
+        <script src="../mark.min.js"></script>
+        <script src="../searcher.js"></script>
+
+        <script src="../clipboard.min.js"></script>
+        <script src="../highlight.js"></script>
+        <script src="../book.js"></script>
+
+        <!-- Custom JS scripts -->
+        <script src="../theme/extra.js"></script>
+        <script src="../theme/pagetoc.js"></script>
+        <script src="../mermaid.min.js"></script>
+        <script src="../mermaid-init.js"></script>
+
+
+
+    </div>
+    </body>
+</html>

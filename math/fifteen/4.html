@@ -1,0 +1,1185 @@
+<!DOCTYPE HTML>
+<html lang="en" class="light sidebar-visible" dir="ltr">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>结语 - 万物之理：从计数到宇宙的数学地图</title>
+
+
+        <!-- Custom HTML head -->
+        <!-- theme/head.hbs -->
+        <script>
+        window.MathJax = {
+          tex: {
+            // 同时支持 $...$ 和 \( ... \) 作为行内公式
+            inlineMath: [['$', '$'], ['\(', '\)']],
+            // 同时支持 $$...$$ 和 \[ ... \] 作为块级公式
+            displayMath: [['$$', '$$'], ['\[', '\]']],
+            processEscapes: true,
+            // 如果想启用更多扩展（例如 mhchem 等），可以在这里添加 packages
+            // packages: {'[+]': ['mhchem']}
+          },
+          svg: {
+            fontCache: 'global'
+          }
+        };
+        </script>
+        
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff">
+
+        <link rel="icon" href="../../favicon.svg">
+        <link rel="shortcut icon" href="../../favicon.png">
+        <link rel="stylesheet" href="../../css/variables.css">
+        <link rel="stylesheet" href="../../css/general.css">
+        <link rel="stylesheet" href="../../css/chrome.css">
+        <link rel="stylesheet" href="../../css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../../fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" id="highlight-css" href="../../highlight.css">
+        <link rel="stylesheet" id="tomorrow-night-css" href="../../tomorrow-night.css">
+        <link rel="stylesheet" id="ayu-highlight-css" href="../../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        <link rel="stylesheet" href="../../theme/custom.css">
+        <link rel="stylesheet" href="../../theme/pagetoc.css">
+
+
+        <!-- Provide site root and default themes to javascript -->
+        <script>
+            const path_to_root = "../../";
+            const default_light_theme = "light";
+            const default_dark_theme = "navy";
+            window.path_to_searchindex_js = "../../searchindex.js";
+        </script>
+        <!-- Start loading toc.js asap -->
+        <script src="../../toc.js"></script>
+    </head>
+    <body>
+    <div id="mdbook-help-container">
+        <div id="mdbook-help-popup">
+            <h2 class="mdbook-help-title">Keyboard shortcuts</h2>
+            <div>
+                <p>Press <kbd>←</kbd> or <kbd>→</kbd> to navigate between chapters</p>
+                <p>Press <kbd>S</kbd> or <kbd>/</kbd> to search in the book</p>
+                <p>Press <kbd>?</kbd> to show this help</p>
+                <p>Press <kbd>Esc</kbd> to hide this help</p>
+            </div>
+        </div>
+    </div>
+    <div id="body-container">
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                let theme = localStorage.getItem('mdbook-theme');
+                let sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            const default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? default_dark_theme : default_light_theme;
+            let theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            const html = document.documentElement;
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add("js");
+        </script>
+
+        <input type="checkbox" id="sidebar-toggle-anchor" class="hidden">
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            let sidebar = null;
+            const sidebar_toggle = document.getElementById("sidebar-toggle-anchor");
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+                sidebar_toggle.checked = false;
+            }
+            if (sidebar === 'visible') {
+                sidebar_toggle.checked = true;
+            } else {
+                html.classList.remove('sidebar-visible');
+            }
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <!-- populated by js -->
+            <mdbook-sidebar-scrollbox class="sidebar-scrollbox"></mdbook-sidebar-scrollbox>
+            <noscript>
+                <iframe class="sidebar-iframe-outer" src="../../toc.html"></iframe>
+            </noscript>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle">
+                <div class="sidebar-resize-indicator"></div>
+            </div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky">
+                    <div class="left-buttons">
+                        <label id="sidebar-toggle" class="icon-button" for="sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </label>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="default_theme">Auto</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search (`/`)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="/ s" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">万物之理：从计数到宇宙的数学地图</h1>
+
+                    <div class="right-buttons">
+                        <a href="../../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <div class="search-wrapper">
+                            <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                            <div class="spinner-wrapper">
+                                <i class="fa fa-spinner fa-spin"></i>
+                            </div>
+                        </div>
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/katex.min.css">
+<hr />
+<div style="text-align: center; margin: 100px 0; font-size: 42px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); padding: 150px; color: white; border-radius: 35px; line-height: 3; box-shadow: 0 40px 100px rgba(0,0,0,0.7);">
+<h1 id="第十四章结语"><a class="header" href="#第十四章结语"><strong>第十四章结语</strong></a></h1>
+<h1 id="epilogue-chapter-14"><a class="header" href="#epilogue-chapter-14"><strong>EPILOGUE: CHAPTER 14</strong></a></h1>
+<hr />
+<h2 id="幂级数从有限到无穷的飞跃"><a class="header" href="#幂级数从有限到无穷的飞跃"><strong>幂级数：从有限到无穷的飞跃</strong></a></h2>
+<h2 id="power-series-the-leap-from-finite-to-infinite"><a class="header" href="#power-series-the-leap-from-finite-to-infinite"><strong>POWER SERIES: THE LEAP FROM FINITE TO INFINITE</strong></a></h2>
+<hr />
+<p><em>"In mathematics, infinity is not a place,</em><br />
+<em>but a journey.</em><br />
+<em>Power series are the vehicle."</em></p>
+<p><strong>"在数学中，无穷不是一个地方，</strong><br />
+<strong>而是一段旅程。</strong><br />
+<strong>幂级数是交通工具。"</strong></p>
+</div>
+<hr />
+<div style="background: linear-gradient(135deg, #e8f5e9 0%, #c8e6c9 100%); padding: 50px; border-radius: 20px; margin: 40px 0; box-shadow: 0 15px 40px rgba(0,0,0,0.15);">
+<h2 id="-本章知识架构回顾"><a class="header" href="#-本章知识架构回顾"><strong>📖 本章知识架构回顾</strong></a></h2>
+<pre><code>第十四章：幂级数 (POWER SERIES)
+│
+├─ §14.1 幂级数 (Power Series Basics)
+│   │
+│   ├─ 核心概念
+│   │   ├─ 函数项级数：Σu_n(x)
+│   │   ├─ 幂级数：Σa_n(x-x₀)ⁿ
+│   │   └─ 收敛域：函数与几何的统一
+│   │
+│   ├─ 三大基石定理
+│   │   ├─ Abel定理（收敛半径）
+│   │   ├─ 逐项求导定理
+│   │   └─ 逐项积分定理
+│   │
+│   └─ 核心思想
+│       └─ 将函数"离散化"为无穷多项式
+│
+├─ §14.2 函数的幂级数展开 (Power Series Expansion)
+│   │
+│   ├─ 理论基础
+│   │   ├─ 泰勒定理（有限近似）
+│   │   ├─ 泰勒级数（无穷精确）
+│   │   └─ 展开充要条件：R_n(x)→0
+│   │
+│   ├─ 六大基本展开式 ⭐⭐⭐⭐⭐
+│   │   ├─ e^x = Σx^n/n!
+│   │   ├─ sin x = Σ(-1)^n x^(2n+1)/(2n+1)!
+│   │   ├─ cos x = Σ(-1)^n x^(2n)/(2n)!
+│   │   ├─ ln(1+x) = Σ(-1)^(n-1) x^n/n
+│   │   ├─ 1/(1-x) = Σx^n
+│   │   └─ (1+x)^α = ΣC(α,n)x^n
+│   │
+│   ├─ 间接展开方法
+│   │   ├─ 变量代换（最常用）
+│   │   ├─ 逐项求导/积分
+│   │   ├─ 四则运算
+│   │   └─ 复合函数
+│   │
+│   └─ 核心思想
+│       └─ 任何"好"的函数都能写成幂级数
+│
+└─ §14.3 复变量的指数函数·欧拉公式 (Euler's Formula)
+    │
+    ├─ 从实到复的推广
+    │   ├─ 复数项级数
+    │   ├─ 收敛圆（圆盘vs区间）
+    │   └─ 复变量初等函数
+    │
+    ├─ 欧拉公式 ⭐⭐⭐⭐⭐
+    │   ├─ e^(ix) = cos x + i sin x
+    │   ├─ e^(iπ) + 1 = 0（最美公式）
+    │   └─ 指数、三角、复数的大统一
+    │
+    ├─ 应用
+    │   ├─ 棣莫弗公式
+    │   ├─ 复数指数表示：z=re^(iθ)
+    │   ├─ 多倍角公式
+    │   └─ 傅里叶分析基础
+    │
+    └─ 核心思想
+        └─ 复数是数学的"自然语言"
+</code></pre>
+</div>
+<hr />
+<div style="text-align: center; margin: 80px 0; font-size: 32px; background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%); padding: 100px; color: white; border-radius: 25px; line-height: 2.8;">
+<h1 id="本章的三大核心思想"><a class="header" href="#本章的三大核心思想"><strong>本章的三大核心思想</strong></a></h1>
+<h1 id="three-core-ideas"><a class="header" href="#three-core-ideas"><strong>THREE CORE IDEAS</strong></a></h1>
+</div>
+<hr />
+<h2 id="-思想一级数是函数的dna"><a class="header" href="#-思想一级数是函数的dna"><strong>💡 思想一：级数是函数的"DNA"</strong></a></h2>
+<div style="background: #e3f2fd; padding: 40px; border-left: 8px solid #2196f3; margin: 30px 0;">
+<h3 id="从多项式到无穷级数"><a class="header" href="#从多项式到无穷级数"><strong>从多项式到无穷级数</strong></a></h3>
+<p><strong>有限多项式</strong>：
+<span class="katex-display"><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.13889em;">P</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:-0.1389em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">n</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mopen">(</span><span class="mord mathnormal">x</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.7333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal">a</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">0</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.7333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal">a</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mord mathnormal">x</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1.0141em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal">a</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mord"><span class="mord mathnormal">x</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8641em;"><span style="top:-3.113em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6667em;vertical-align:-0.0833em;"></span><span class="minner">⋯</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.8644em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal">a</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">n</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mord"><span class="mord mathnormal">x</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.7144em;"><span style="top:-3.113em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">n</span></span></span></span></span></span></span></span></span></span></span></span></p>
+<ul>
+<li>简单、可计算</li>
+<li>但表达能力有限</li>
+</ul>
+<p><strong>幂级数</strong>：
+<span class="katex-display"><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.10764em;">f</span><span class="mopen">(</span><span class="mord mathnormal">x</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:2.9185em;vertical-align:-1.2671em;"></span><span class="mop op-limits"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.6514em;"><span style="top:-1.8829em;margin-left:0em;"><span class="pstrut" style="height:3.05em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">n</span><span class="mrel mtight">=</span><span class="mord mtight">0</span></span></span></span><span style="top:-3.05em;"><span class="pstrut" style="height:3.05em;"></span><span><span class="mop op-symbol large-op">∑</span></span></span><span style="top:-4.3em;margin-left:0em;"><span class="pstrut" style="height:3.05em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">∞</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:1.2671em;"><span></span></span></span></span></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="mord mathnormal">a</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">n</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mord"><span class="mord mathnormal">x</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.7144em;"><span style="top:-3.113em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">n</span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.7333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal">a</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">0</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.7333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal">a</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mord mathnormal">x</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1.0141em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal">a</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mord"><span class="mord mathnormal">x</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8641em;"><span style="top:-3.113em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.313em;"></span><span class="minner">⋯</span></span></span></span></span></p>
+<ul>
+<li>无穷多项，表达能力无限</li>
+<li>可以精确表示超越函数</li>
+</ul>
+<hr />
+<h3 id="深刻类比"><a class="header" href="#深刻类比"><strong>深刻类比</strong></a></h3>
+<div class="table-wrapper"><table><thead><tr><th>概念</th><th>有限</th><th>无穷</th></tr></thead><tbody>
+<tr><td><strong>代数</strong></td><td>多项式方程</td><td>幂级数</td></tr>
+<tr><td><strong>几何</strong></td><td>折线逼近</td><td>曲线精确</td></tr>
+<tr><td><strong>生物</strong></td><td>基因片段</td><td>完整DNA</td></tr>
+<tr><td><strong>音乐</strong></td><td>单音</td><td>和弦交响</td></tr>
+</tbody></table>
+</div>
+<hr />
+<h3 id="哲学意义"><a class="header" href="#哲学意义"><strong>哲学意义</strong></a></h3>
+<blockquote>
+<p><strong>每个函数都有唯一的"级数指纹"</strong><br />
+（在其解析域内）</p>
+</blockquote>
+<p><span class="katex-display"><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.5806em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal">a</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">n</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:2.251em;vertical-align:-0.686em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.565em;"><span style="top:-2.314em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathnormal">n</span><span class="mclose">!</span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.677em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord"><span class="mord mathnormal" style="margin-right:0.10764em;">f</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.888em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mopen mtight">(</span><span class="mord mathnormal mtight">n</span><span class="mclose mtight">)</span></span></span></span></span></span></span></span></span><span class="mopen">(</span><span class="mord"><span class="mord mathnormal">x</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">0</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mclose">)</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.686em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span></span></span></p>
+<p>这个公式说明：</p>
+<ul>
+<li><strong>函数在一点的所有导数值</strong></li>
+<li><strong>完全决定了函数的整体行为</strong></li>
+<li><strong>局部蕴含整体</strong>（解析性的本质）</li>
+</ul>
+</div>
+<hr />
+<h2 id="-思想二收敛域揭示函数的本质"><a class="header" href="#-思想二收敛域揭示函数的本质"><strong>💡 思想二：收敛域揭示函数的本质</strong></a></h2>
+<div style="background: #fff3e0; padding: 40px; border-left: 8px solid #ff9800; margin: 30px 0;">
+<h3 id="收敛半径不是偶然"><a class="header" href="#收敛半径不是偶然"><strong>收敛半径不是偶然</strong></a></h3>
+<p>不同函数的收敛半径反映了它们的<strong>内在性质</strong>：</p>
+<div class="table-wrapper"><table><thead><tr><th>函数</th><th>收敛半径</th><th>原因</th></tr></thead><tbody>
+<tr><td><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6644em;"></span><span class="mord"><span class="mord mathnormal">e</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.6644em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">x</span></span></span></span></span></span></span></span></span></span></span></td><td><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.00773em;">R</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6667em;vertical-align:-0.0833em;"></span><span class="mord">+</span><span class="mord">∞</span></span></span></span></td><td>整函数，处处解析</td></tr>
+<tr><td><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8623em;vertical-align:-0.1944em;"></span><span class="mop">sin</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal">x</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mop">cos</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal">x</span></span></span></span></td><td><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.00773em;">R</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6667em;vertical-align:-0.0833em;"></span><span class="mord">+</span><span class="mord">∞</span></span></span></span></td><td>整函数</td></tr>
+<tr><td><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.2484em;vertical-align:-0.4033em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.8451em;"><span style="top:-2.655em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">1</span><span class="mbin mtight">−</span><span class="mord mathnormal mtight">x</span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.394em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">1</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.4033em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span></span></td><td><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.00773em;">R</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">1</span></span></span></span></td><td>在 <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">x</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">1</span></span></span></span> 有奇点</td></tr>
+<tr><td><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mop">ln</span><span class="mopen">(</span><span class="mord">1</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal">x</span><span class="mclose">)</span></span></span></span></td><td><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.00773em;">R</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">1</span></span></span></span></td><td>在 <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">x</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.7278em;vertical-align:-0.0833em;"></span><span class="mord">−</span><span class="mord">1</span></span></span></span> 有奇点</td></tr>
+<tr><td><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord">1</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal">x</span><span class="mclose"><span class="mclose">)</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.6644em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.0037em;">α</span></span></span></span></span></span></span></span></span></span></span></td><td><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.00773em;">R</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">1</span></span></span></span></td><td>在 <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">x</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.7278em;vertical-align:-0.0833em;"></span><span class="mord">−</span><span class="mord">1</span></span></span></span> 有分支点</td></tr>
+</tbody></table>
+</div>
+<hr />
+<h3 id="几何直观"><a class="header" href="#几何直观"><strong>几何直观</strong></a></h3>
+<pre><code>实轴上的收敛域：
+
+e^x:     ←────────────────→  (-∞,+∞)
+                             无界
+
+1/(1-x): (───────────────)    (-1,1)
+        -1      0      1      有界，端点奇异
+
+ln(1+x): (───────────────]    (-1,1]
+        -1      0      1      端点行为不同
+</code></pre>
+<hr />
+<h3 id="复平面的视角"><a class="header" href="#复平面的视角"><strong>复平面的视角</strong></a></h3>
+<p>在<strong>复平面</strong>上，收敛域是<strong>圆盘</strong>：</p>
+<pre><code>        Im
+         ↑
+    ┌────┼────┐
+   │     │     │  收敛圆
+  │      │      │  |z| = R
+  │      O──────┼──→ Re
+  │      │      │
+   │     │     │
+    └────┼────┘
+</code></pre>
+<p><strong>收敛半径 = 到最近奇点的距离</strong></p>
+<p>这是<strong>复变函数论</strong>的核心洞察！</p>
+<hr />
+<h3 id="哲学洞察"><a class="header" href="#哲学洞察"><strong>哲学洞察</strong></a></h3>
+<blockquote>
+<p><strong>函数的"作用范围"不是人为规定的，</strong><br />
+<strong>而是由函数自身的"奇异性"决定的。</strong></p>
+</blockquote>
+<p>就像物理中：</p>
+<ul>
+<li>引力场的影响范围取决于质量分布</li>
+<li>光的传播取决于介质的折射率</li>
+</ul>
+<p><strong>数学结构有其内在必然性！</strong></p>
+</div>
+<hr />
+<h2 id="-思想三欧拉公式是数学的大统一理论"><a class="header" href="#-思想三欧拉公式是数学的大统一理论"><strong>💡 思想三：欧拉公式是数学的"大统一理论"</strong></a></h2>
+<div style="background: #e8f5e9; padding: 40px; border-left: 8px solid #4caf50; margin: 30px 0;">
+<h3 id="五大数学分支的交汇点"><a class="header" href="#五大数学分支的交汇点"><strong>五大数学分支的交汇点</strong></a></h3>
+<p><span class="katex-display"><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.638em;vertical-align:-0.4233em;"></span><span class="mord"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.2147em;"><span style="top:-3.638em;"><span class="pstrut" style="height:3.638em;"></span><span class="boxpad"><span class="mord"><span class="mord"><span class="mord"><span class="mord mathnormal">e</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8747em;"><span style="top:-3.113em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.03588em;">iπ</span></span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mord">1</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mord">0</span></span></span></span></span><span style="top:-3.2147em;"><span class="pstrut" style="height:3.638em;"></span><span class="stretchy fbox" style="height:1.638em;border-style:solid;border-width:0.04em;"></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.4233em;"><span></span></span></span></span></span></span></span></span></span></p>
+<p>这个公式联系了：</p>
+<div class="table-wrapper"><table><thead><tr><th>常数</th><th>数学分支</th><th>含义</th></tr></thead><tbody>
+<tr><td><strong><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">e</span></span></span></span></strong></td><td>微积分</td><td>增长、变化率、自然对数底</td></tr>
+<tr><td><strong><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6595em;"></span><span class="mord mathnormal">i</span></span></span></span></strong></td><td>代数</td><td>虚数单位、多项式完全分解</td></tr>
+<tr><td><strong><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal" style="margin-right:0.03588em;">π</span></span></span></span></strong></td><td>几何</td><td>圆周率、周期性</td></tr>
+<tr><td><strong><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">1</span></span></span></span></strong></td><td>算术</td><td>单位元、同一性</td></tr>
+<tr><td><strong><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">0</span></span></span></span></strong></td><td>逻辑/哲学</td><td>虚无、平衡、零点</td></tr>
+</tbody></table>
+</div>
+<hr />
+<h3 id="三个层次的统一"><a class="header" href="#三个层次的统一"><strong>三个层次的统一</strong></a></h3>
+<p><strong>第一层：形式统一</strong>
+<span class="katex-display"><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8747em;"></span><span class="mord"><span class="mord mathnormal">e</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8747em;"><span style="top:-3.113em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">i</span><span class="mord mathnormal mtight">x</span></span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6667em;vertical-align:-0.0833em;"></span><span class="mop">cos</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal">x</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6679em;"></span><span class="mord mathnormal">i</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mop">sin</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal">x</span></span></span></span></span></p>
+<p>指数函数 ⟺ 三角函数</p>
+<p><strong>第二层：几何统一</strong></p>
+<ul>
+<li>指数函数：实轴上的增长</li>
+<li>三角函数：单位圆上的旋转</li>
+<li>复指数：<strong>旋转 = 虚方向上的增长</strong></li>
+</ul>
+<pre><code>    Im
+     ↑  e^(ix)
+     │   ●
+     │  /│
+     │ / │ 
+     │/  │
+─────O───┼───→ Re
+     │  x (angle)
+     
+旋转角度 x ⟺ 虚指数 ix
+</code></pre>
+<p><strong>第三层：哲学统一</strong></p>
+<blockquote>
+<p><strong>直线（指数增长）与圆（周期振荡）</strong><br />
+<strong>通过虚数单位 <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6595em;"></span><span class="mord mathnormal">i</span></span></span></span> 统一起来</strong></p>
+</blockquote>
+<p>这揭示了：</p>
+<ul>
+<li><strong>线性与周期性的本质联系</strong></li>
+<li><strong>代数与几何的深层统一</strong></li>
+<li><strong>实与虚的辩证关系</strong></li>
+</ul>
+<hr />
+<h3 id="历史评价"><a class="header" href="#历史评价"><strong>历史评价</strong></a></h3>
+<p><strong>费曼</strong>："这是我们的瑰宝。"<br />
+<strong>斯坦因</strong>："这是上帝写下的公式。"<br />
+<strong>物理学家</strong>："没有它，量子力学无法建立。"<br />
+<strong>工程师</strong>："没有它，现代通信不复存在。"</p>
+<hr />
+<h3 id="应用的广度"><a class="header" href="#应用的广度"><strong>应用的广度</strong></a></h3>
+<p>从欧拉公式衍生的应用：</p>
+<p>✨ <strong>傅里叶分析</strong>：信号分解<br />
+✨ <strong>量子力学</strong>：波函数<br />
+✨ <strong>电路理论</strong>：相量法<br />
+✨ <strong>控制理论</strong>：系统稳定性<br />
+✨ <strong>流体力学</strong>：复势函数<br />
+✨ <strong>数论</strong>：黎曼ζ函数</p>
+<p><strong>几乎所有现代科技都依赖于它！</strong></p>
+</div>
+<hr />
+<div style="text-align: center; margin: 80px 0; font-size: 32px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); padding: 100px; color: white; border-radius: 25px; line-height: 2.8;">
+<h1 id="本章的方法论启示"><a class="header" href="#本章的方法论启示"><strong>本章的方法论启示</strong></a></h1>
+<h1 id="methodological-insights"><a class="header" href="#methodological-insights"><strong>METHODOLOGICAL INSIGHTS</strong></a></h1>
+</div>
+<hr />
+<h2 id="-数学思维的四个层次"><a class="header" href="#-数学思维的四个层次"><strong>🎯 数学思维的四个层次</strong></a></h2>
+<div style="background: #f5f5f5; padding: 40px; border-radius: 20px; margin: 30px 0;">
+<h3 id="层次1计算层computational-level"><a class="header" href="#层次1计算层computational-level"><strong>层次1：计算层（Computational Level）</strong></a></h3>
+<p><strong>问题</strong>：给定函数，求其幂级数展开</p>
+<p><strong>技能</strong>：</p>
+<ul>
+<li>记住基本展开式</li>
+<li>掌握代换、求导、积分等方法</li>
+<li>计算收敛半径</li>
+</ul>
+<p><strong>本章训练</strong>：</p>
+<ul>
+<li>六大基本展开式</li>
+<li>各种间接方法</li>
+<li>习题计算</li>
+</ul>
+<hr />
+<h3 id="层次2理论层theoretical-level"><a class="header" href="#层次2理论层theoretical-level"><strong>层次2：理论层（Theoretical Level）</strong></a></h3>
+<p><strong>问题</strong>：为什么函数可以展开？何时可以？</p>
+<p><strong>理解</strong>：</p>
+<ul>
+<li>Abel定理（收敛性）</li>
+<li>Taylor定理（余项分析）</li>
+<li>充要条件：<span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.00773em;">R</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:-0.0077em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">n</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mopen">(</span><span class="mord mathnormal">x</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">→</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">0</span></span></span></span></li>
+</ul>
+<p><strong>本章训练</strong>：</p>
+<ul>
+<li>定理证明</li>
+<li>反例理解（<span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.9869em;"></span><span class="mord"><span class="mord mathnormal">e</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.9869em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">−</span><span class="mord mtight">1/</span><span class="mord mtight"><span class="mord mathnormal mtight">x</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8913em;"><span style="top:-2.931em;margin-right:0.0714em;"><span class="pstrut" style="height:2.5em;"></span><span class="sizing reset-size3 size1 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span>）</li>
+<li>逻辑严密性</li>
+</ul>
+<hr />
+<h3 id="层次3结构层structural-level"><a class="header" href="#层次3结构层structural-level"><strong>层次3：结构层（Structural Level）</strong></a></h3>
+<p><strong>问题</strong>：幂级数在数学大厦中的地位？</p>
+<p><strong>洞察</strong>：</p>
+<ul>
+<li>连接代数与分析</li>
+<li>连接离散与连续</li>
+<li>连接实数与复数</li>
+<li>连接有限与无穷</li>
+</ul>
+<p><strong>本章训练</strong>：</p>
+<ul>
+<li>实数→复数推广</li>
+<li>多项式→无穷级数</li>
+<li>局部→整体</li>
+</ul>
+<hr />
+<h3 id="层次4哲学层philosophical-level"><a class="header" href="#层次4哲学层philosophical-level"><strong>层次4：哲学层（Philosophical Level）</strong></a></h3>
+<p><strong>问题</strong>：幂级数揭示了什么本质？</p>
+<p><strong>领悟</strong>：</p>
+<ul>
+<li><strong>无穷与有限的辩证统一</strong></li>
+<li><strong>局部信息蕴含整体性质</strong></li>
+<li><strong>形式结构反映内在本质</strong></li>
+<li><strong>数学真理的必然性</strong></li>
+</ul>
+<p><strong>本章训练</strong>：</p>
+<ul>
+<li>欧拉公式的多重含义</li>
+<li>收敛半径的几何意义</li>
+<li>数学美学</li>
+</ul>
+</div>
+<hr />
+<h2 id="-研究方法的演化"><a class="header" href="#-研究方法的演化"><strong>🔬 研究方法的演化</strong></a></h2>
+<div style="background: linear-gradient(135deg, #e3f2fd 0%, #bbdefb 100%); padding: 40px; border-radius: 20px; margin: 30px 0;">
+<h3 id="历史脉络"><a class="header" href="#历史脉络"><strong>历史脉络</strong></a></h3>
+<pre><code>17世纪：牛顿、莱布尼茨
+    │
+    ├─ 无穷级数作为计算工具
+    ├─ 形式操作（不严格）
+    └─ 成功计算π, e, ln等
+    │
+    ↓
+18世纪：欧拉、伯努利
+    │
+    ├─ 大胆的形式推广
+    ├─ 欧拉公式的发现
+    └─ 广泛应用但缺乏严格性
+    │
+    ↓
+19世纪：柯西、魏尔斯特拉斯
+    │
+    ├─ 严格化运动
+    ├─ 收敛性理论
+    ├─ ε-δ语言
+    └─ 逐项运算的条件
+    │
+    ↓
+19-20世纪：黎曼、柯西
+    │
+    ├─ 复变函数论
+    ├─ 解析函数理论
+    └─ 代数几何联系
+    │
+    ↓
+20世纪：现代数学
+    │
+    ├─ 泛函分析
+    ├─ 分布理论
+    └─ 应用数学蓬勃发展
+</code></pre>
+<hr />
+<h3 id="方法论的三次飞跃"><a class="header" href="#方法论的三次飞跃"><strong>方法论的三次飞跃</strong></a></h3>
+<p><strong>第一次飞跃</strong>：从有限到无穷</p>
+<ul>
+<li>多项式 → 幂级数</li>
+<li>近似 → 精确</li>
+<li><strong>关键</strong>：收敛性概念</li>
+</ul>
+<p><strong>第二次飞跃</strong>：从实数到复数</p>
+<ul>
+<li>实轴 → 复平面</li>
+<li>区间 → 圆盘</li>
+<li><strong>关键</strong>：解析延拓</li>
+</ul>
+<p><strong>第三次飞跃</strong>：从具体到抽象</p>
+<ul>
+<li>函数 → 算子</li>
+<li>级数 → 泛函</li>
+<li><strong>关键</strong>：结构化思维</li>
+</ul>
+</div>
+<hr />
+<div style="text-align: center; margin: 80px 0; font-size: 32px; background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%); padding: 100px; color: white; border-radius: 25px; line-height: 2.8;">
+<h1 id="本章与后续课程的联系"><a class="header" href="#本章与后续课程的联系"><strong>本章与后续课程的联系</strong></a></h1>
+<h1 id="connections-to-advanced-topics"><a class="header" href="#connections-to-advanced-topics"><strong>CONNECTIONS TO ADVANCED TOPICS</strong></a></h1>
+</div>
+<hr />
+<h2 id="-通向更高数学的桥梁"><a class="header" href="#-通向更高数学的桥梁"><strong>🌉 通向更高数学的桥梁</strong></a></h2>
+<div style="background: #fff3e0; padding: 40px; border-left: 8px solid #ff9800; margin: 30px 0;">
+<h3 id="1-复变函数论-complex-analysis"><a class="header" href="#1-复变函数论-complex-analysis"><strong>1. 复变函数论 (Complex Analysis)</strong></a></h3>
+<p><strong>本章基础</strong> → <strong>复分析</strong></p>
+<ul>
+<li>收敛圆 → 解析域</li>
+<li>幂级数 → Laurent级数</li>
+<li>欧拉公式 → Cauchy积分公式</li>
+<li>逐项积分 → 留数定理</li>
+</ul>
+<p><strong>核心课题</strong>：</p>
+<ul>
+<li>全纯函数</li>
+<li>单值化定理</li>
+<li>黎曼曲面</li>
+<li>保角映射</li>
+</ul>
+<hr />
+<h3 id="2-傅里叶分析-fourier-analysis"><a class="header" href="#2-傅里叶分析-fourier-analysis"><strong>2. 傅里叶分析 (Fourier Analysis)</strong></a></h3>
+<p><strong>本章基础</strong> → <strong>调和分析</strong></p>
+<ul>
+<li>幂级数 → 三角级数</li>
+<li>欧拉公式 → 复傅里叶级数</li>
+<li>收敛性 → 逐点/一致收敛</li>
+</ul>
+<p><strong>核心课题</strong>：</p>
+<ul>
+<li>傅里叶变换</li>
+<li>频谱分析</li>
+<li>小波分析</li>
+<li>信号处理</li>
+</ul>
+<hr />
+<h3 id="3-常微分方程-ode"><a class="header" href="#3-常微分方程-ode"><strong>3. 常微分方程 (ODE)</strong></a></h3>
+<p><strong>本章基础</strong> → <strong>级数解法</strong></p>
+<ul>
+<li>Taylor展开 → 幂级数解</li>
+<li>逐项求导 → 解的唯一性</li>
+<li>初值问题 → 解析解</li>
+</ul>
+<p><strong>核心课题</strong>：</p>
+<ul>
+<li>Frobenius方法</li>
+<li>特殊函数（Bessel, Legendre等）</li>
+<li>渐近展开</li>
+</ul>
+<hr />
+<h3 id="4-实变函数论-real-analysis"><a class="header" href="#4-实变函数论-real-analysis"><strong>4. 实变函数论 (Real Analysis)</strong></a></h3>
+<p><strong>本章基础</strong> → <strong>测度论</strong></p>
+<ul>
+<li>逐点收敛 → a.e.收敛</li>
+<li>一致收敛 → L^p收敛</li>
+<li>函数空间 → Banach空间</li>
+</ul>
+<p><strong>核心课题</strong>：</p>
+<ul>
+<li>Lebesgue积分</li>
+<li>L^p空间</li>
+<li>分布理论</li>
+</ul>
+<hr />
+<h3 id="5-泛函分析-functional-analysis"><a class="header" href="#5-泛函分析-functional-analysis"><strong>5. 泛函分析 (Functional Analysis)</strong></a></h3>
+<p><strong>本章基础</strong> → <strong>算子理论</strong></p>
+<ul>
+<li>幂级数 → 算子级数</li>
+<li>收敛性 → 算子范数</li>
+<li>Taylor展开 → 算子微积分</li>
+</ul>
+<p><strong>核心课题</strong>：</p>
+<ul>
+<li>Hilbert空间</li>
+<li>谱理论</li>
+<li>算子半群</li>
+</ul>
+<hr />
+<h3 id="6-数值分析-numerical-analysis"><a class="header" href="#6-数值分析-numerical-analysis"><strong>6. 数值分析 (Numerical Analysis)</strong></a></h3>
+<p><strong>本章基础</strong> → <strong>逼近理论</strong></p>
+<ul>
+<li>多项式逼近 → 数值算法</li>
+<li>误差估计 → 收敛阶</li>
+<li>级数求和 → 加速方法</li>
+</ul>
+<p><strong>核心课题</strong>：</p>
+<ul>
+<li>插值与拟合</li>
+<li>数值积分</li>
+<li>快速算法（FFT）</li>
+</ul>
+</div>
+<hr />
+<h2 id="-跨学科应用"><a class="header" href="#-跨学科应用"><strong>🔗 跨学科应用</strong></a></h2>
+<div style="background: #e8f5e9; padding: 40px; border-left: 8px solid #4caf50; margin: 30px 0;">
+<h3 id="物理学-physics"><a class="header" href="#物理学-physics"><strong>物理学 (Physics)</strong></a></h3>
+<p><strong>量子力学</strong>：</p>
+<ul>
+<li>波函数：<span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8889em;vertical-align:-0.1944em;"></span><span class="mord mathnormal" style="margin-right:0.03588em;">ψ</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.888em;"></span><span class="mord mathnormal">A</span><span class="mord"><span class="mord mathnormal">e</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.888em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">i</span><span class="mopen mtight">(</span><span class="mord mathnormal mtight" style="margin-right:0.03148em;">k</span><span class="mord mathnormal mtight">x</span><span class="mbin mtight">−</span><span class="mord mathnormal mtight" style="margin-right:0.03588em;">ω</span><span class="mord mathnormal mtight">t</span><span class="mclose mtight">)</span></span></span></span></span></span></span></span></span></span></span></span></li>
+<li>Schrödinger方程的级数解</li>
+<li>微扰理论</li>
+</ul>
+<p><strong>电磁学</strong>：</p>
+<ul>
+<li>电路分析（相量法）</li>
+<li>Maxwell方程的级数解</li>
+<li>天线理论</li>
+</ul>
+<p><strong>统计物理</strong>：</p>
+<ul>
+<li>配分函数：<span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.07153em;">Z</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1.0991em;vertical-align:-0.25em;"></span><span class="mop op-symbol small-op" style="position:relative;top:0em;">∑</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="mord mathnormal">e</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8491em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">−</span><span class="mord mathnormal mtight" style="margin-right:0.05278em;">β</span><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.05764em;">E</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1645em;"><span style="top:-2.357em;margin-left:-0.0576em;margin-right:0.0714em;"><span class="pstrut" style="height:2.5em;"></span><span class="sizing reset-size3 size1 mtight"><span class="mord mathnormal mtight">n</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.143em;"><span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></li>
+<li>相变理论</li>
+<li>临界现象</li>
+</ul>
+<hr />
+<h3 id="工程学-engineering"><a class="header" href="#工程学-engineering"><strong>工程学 (Engineering)</strong></a></h3>
+<p><strong>信号处理</strong>：</p>
+<ul>
+<li>FFT算法</li>
+<li>数字滤波器设计</li>
+<li>图像压缩</li>
+</ul>
+<p><strong>控制理论</strong>：</p>
+<ul>
+<li>传递函数</li>
+<li>稳定性分析（Nyquist, Bode图）</li>
+<li>状态空间方法</li>
+</ul>
+<p><strong>通信理论</strong>：</p>
+<ul>
+<li>调制解调</li>
+<li>信道编码</li>
+<li>OFDM技术</li>
+</ul>
+<hr />
+<h3 id="计算机科学-computer-science"><a class="header" href="#计算机科学-computer-science"><strong>计算机科学 (Computer Science)</strong></a></h3>
+<p><strong>算法设计</strong>：</p>
+<ul>
+<li>生成函数（组合计数）</li>
+<li>动态规划</li>
+<li>复杂度分析</li>
+</ul>
+<p><strong>密码学</strong>：</p>
+<ul>
+<li>有限域上的级数</li>
+<li>伪随机数生成</li>
+<li>椭圆曲线密码</li>
+</ul>
+<p><strong>机器学习</strong>：</p>
+<ul>
+<li>核方法</li>
+<li>特征展开</li>
+<li>神经网络激活函数</li>
+</ul>
+<hr />
+<h3 id="经济学-economics"><a class="header" href="#经济学-economics"><strong>经济学 (Economics)</strong></a></h3>
+<p><strong>金融数学</strong>：</p>
+<ul>
+<li>期权定价（Black-Scholes）</li>
+<li>利率模型</li>
+<li>风险评估</li>
+</ul>
+<p><strong>计量经济学</strong>：</p>
+<ul>
+<li>时间序列分析</li>
+<li>ARIMA模型</li>
+<li>协整理论</li>
+</ul>
+</div>
+<hr />
+<div style="text-align: center; margin: 80px 0; font-size: 32px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); padding: 100px; color: white; border-radius: 25px; line-height: 2.8;">
+<h1 id="学习心得与人生启示"><a class="header" href="#学习心得与人生启示"><strong>学习心得与人生启示</strong></a></h1>
+<h1 id="life-lessons-from-power-series"><a class="header" href="#life-lessons-from-power-series"><strong>LIFE LESSONS FROM POWER SERIES</strong></a></h1>
+</div>
+<hr />
+<h2 id="-从数学到人生的七个启示"><a class="header" href="#-从数学到人生的七个启示"><strong>📜 从数学到人生的七个启示</strong></a></h2>
+<div style="background: linear-gradient(135deg, #fce4ec 0%, #f8bbd0 100%); padding: 50px; border-radius: 20px; margin: 40px 0; box-shadow: 0 10px 30px rgba(0,0,0,0.1);">
+<h3 id="启示一局部决定整体"><a class="header" href="#启示一局部决定整体"><strong>启示一：局部决定整体</strong></a></h3>
+<p><strong>数学</strong>：函数在一点的所有导数 → 函数的整体性质</p>
+<p><strong>人生</strong>：</p>
+<blockquote>
+<p><strong>今天的每一个小决定，</strong><br />
+<strong>塑造了未来的整体轨迹。</strong></p>
+</blockquote>
+<p>就像Taylor级数：
+<span class="katex-display"><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.10764em;">f</span><span class="mopen">(</span><span class="mord mathnormal">x</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.10764em;">f</span><span class="mopen">(</span><span class="mord">0</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1.0519em;vertical-align:-0.25em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.10764em;">f</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8019em;"><span style="top:-3.113em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">′</span></span></span></span></span></span></span></span></span><span class="mopen">(</span><span class="mord">0</span><span class="mclose">)</span><span class="mord mathnormal">x</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:2.1149em;vertical-align:-0.686em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.4289em;"><span style="top:-2.314em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord">2</span><span class="mclose">!</span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.677em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord"><span class="mord mathnormal" style="margin-right:0.10764em;">f</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.7519em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">′′</span></span></span></span></span></span></span></span></span><span class="mopen">(</span><span class="mord">0</span><span class="mclose">)</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.686em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mord"><span class="mord mathnormal">x</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8641em;"><span style="top:-3.113em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.313em;"></span><span class="minner">⋯</span></span></span></span></span></p>
+<ul>
+<li><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.10764em;">f</span><span class="mopen">(</span><span class="mord">0</span><span class="mclose">)</span></span></span></span>：现在的位置</li>
+<li><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.0019em;vertical-align:-0.25em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.10764em;">f</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.7519em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">′</span></span></span></span></span></span></span></span></span><span class="mopen">(</span><span class="mord">0</span><span class="mclose">)</span></span></span></span>：现在的方向（一阶导）</li>
+<li><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.0019em;vertical-align:-0.25em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.10764em;">f</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.7519em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">′′</span></span></span></span></span></span></span></span></span><span class="mopen">(</span><span class="mord">0</span><span class="mclose">)</span></span></span></span>：现在的加速度（二阶导）</li>
+</ul>
+<p><strong>你现在的状态和变化趋势，决定了你的未来！</strong></p>
+<hr />
+<h3 id="启示二收敛需要条件"><a class="header" href="#启示二收敛需要条件"><strong>启示二：收敛需要条件</strong></a></h3>
+<p><strong>数学</strong>：级数收敛要满足条件（<span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">∣</span><span class="mord mathnormal">x</span><span class="mord">∣</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">&lt;</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.00773em;">R</span></span></span></span>）</p>
+<p><strong>人生</strong>：</p>
+<blockquote>
+<p><strong>任何成长都需要在适当的"范围"内。</strong></p>
+</blockquote>
+<ul>
+<li>超出能力范围太多→发散（崩溃）</li>
+<li>过于保守→退化</li>
+<li><strong>最佳成长区</strong>：稍微超出舒适区</li>
+</ul>
+<p>就像：</p>
+<ul>
+<li>学习难度要适中（<span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">∣</span><span class="mord mathnormal">x</span><span class="mord">∣</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">&lt;</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.00773em;">R</span></span></span></span>）</li>
+<li>目标要可达成（收敛域内）</li>
+<li>循序渐进（从中心向外扩展）</li>
+</ul>
+<hr />
+<h3 id="启示三误差可以控制"><a class="header" href="#启示三误差可以控制"><strong>启示三：误差可以控制</strong></a></h3>
+<p><strong>数学</strong>：有限项逼近的误差 <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">∣</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.00773em;">R</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:-0.0077em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">n</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mopen">(</span><span class="mord mathnormal">x</span><span class="mclose">)</span><span class="mord">∣</span></span></span></span> 可估计</p>
+<p><strong>人生</strong>：</p>
+<blockquote>
+<p><strong>完美不可能，但可以不断逼近。</strong></p>
+</blockquote>
+<ul>
+<li>不必追求一步到位</li>
+<li>每一步都比上一步好就是进步</li>
+<li><strong>渐进改善</strong>胜过<strong>完美主义拖延</strong></li>
+</ul>
+<p>Taylor多项式告诉我们：
+<span class="katex-display"><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">∣</span><span class="mord mathnormal" style="margin-right:0.10764em;">f</span><span class="mopen">(</span><span class="mord mathnormal">x</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.13889em;">P</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:-0.1389em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">n</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mopen">(</span><span class="mord mathnormal">x</span><span class="mclose">)</span><span class="mord">∣</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">≤</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:2.2963em;vertical-align:-0.936em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.3603em;"><span style="top:-2.314em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mopen">(</span><span class="mord mathnormal">n</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mord">1</span><span class="mclose">)!</span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.677em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.10903em;">M</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.936em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mord">∣</span><span class="mord mathnormal">x</span><span class="mord"><span class="mord">∣</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8641em;"><span style="top:-3.113em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">n</span><span class="mbin mtight">+</span><span class="mord mtight">1</span></span></span></span></span></span></span></span></span></span></span></span></span></p>
+<p>随着 <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">n</span></span></span></span> 增大，误差快速减小！</p>
+<hr />
+<h3 id="启示四不同的路径相同的目标"><a class="header" href="#启示四不同的路径相同的目标"><strong>启示四：不同的路径，相同的目标</strong></a></h3>
+<p><strong>数学</strong>：同一函数有多种展开方法</p>
+<ul>
+<li>直接Taylor展开</li>
+<li>变量代换</li>
+<li>逐项积分</li>
+<li>待定系数</li>
+</ul>
+<p><strong>人生</strong>：</p>
+<blockquote>
+<p><strong>条条大路通罗马，找到适合自己的路。</strong></p>
+</blockquote>
+<ul>
+<li>有人直接攻克（直接法）</li>
+<li>有人迂回前进（间接法）</li>
+<li>有人积累经验（积分法）</li>
+<li><strong>方法不同，目标一致</strong></li>
+</ul>
+<hr />
+<h3 id="启示五复数比实数更真实"><a class="header" href="#启示五复数比实数更真实"><strong>启示五：复数比实数更"真实"</strong></a></h3>
+<p><strong>数学</strong>：</p>
+<ul>
+<li>实数中 <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8974em;vertical-align:-0.0833em;"></span><span class="mord"><span class="mord mathnormal">x</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">1</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">0</span></span></span></span> 无解</li>
+<li>复数中所有多项式都能分解</li>
+<li>复平面比实轴更"完整"</li>
+</ul>
+<p><strong>人生</strong>：</p>
+<blockquote>
+<p><strong>看似"虚幻"的想象力，</strong><br />
+<strong>往往是认识"真实"的钥匙。</strong></p>
+</blockquote>
+<p>欧拉公式 <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.908em;vertical-align:-0.0833em;"></span><span class="mord"><span class="mord mathnormal">e</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8247em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.03588em;">iπ</span></span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">1</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">0</span></span></span></span> 告诉我们：</p>
+<ul>
+<li>虚数不虚</li>
+<li>想象力创造现实</li>
+<li>多维视角看问题</li>
+</ul>
+<p>就像：</p>
+<ul>
+<li>艺术与科学结合</li>
+<li>理性与感性平衡</li>
+<li>现实与理想并重</li>
+</ul>
+<hr />
+<h3 id="启示六周期性与增长性的统一"><a class="header" href="#启示六周期性与增长性的统一"><strong>启示六：周期性与增长性的统一</strong></a></h3>
+<p><strong>数学</strong>：<span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8247em;"></span><span class="mord"><span class="mord mathnormal">e</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8247em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">i</span><span class="mord mathnormal mtight">x</span></span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6667em;vertical-align:-0.0833em;"></span><span class="mop">cos</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal">x</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6679em;"></span><span class="mord mathnormal">i</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mop">sin</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal">x</span></span></span></span></p>
+<p><strong>人生</strong>：</p>
+<blockquote>
+<p><strong>直线前进（指数增长）与螺旋上升（周期振荡）</strong><br />
+<strong>可以和谐统一。</strong></p>
+</blockquote>
+<ul>
+<li>人生不是单调的直线上升</li>
+<li>也不是简单的原地循环</li>
+<li>而是<strong>螺旋式上升</strong>：
+<ul>
+<li>有高潮和低谷（<span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8623em;vertical-align:-0.1944em;"></span><span class="mop">sin</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mop">cos</span></span></span></span>）</li>
+<li>但整体趋势向上（<span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7936em;"></span><span class="mord"><span class="mord mathnormal">e</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.7936em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">t</span></span></span></span></span></span></span></span></span></span></span>）</li>
+</ul>
+</li>
+</ul>
+<p><span class="katex-display"><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord text"><span class="mord cjk_fallback">成长</span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1.0936em;vertical-align:-0.25em;"></span><span class="mord"><span class="mord mathnormal">e</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8436em;"><span style="top:-3.113em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">t</span></span></span></span></span></span></span></span><span class="mopen">(</span><span class="mop">cos</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.03588em;">ω</span><span class="mord mathnormal">t</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal">i</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mop">sin</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.03588em;">ω</span><span class="mord mathnormal">t</span><span class="mclose">)</span></span></span></span></span></p>
+<p>在波动中成长，在循环中进步！</p>
+<hr />
+<h3 id="启示七无穷的力量"><a class="header" href="#启示七无穷的力量"><strong>启示七：无穷的力量</strong></a></h3>
+<p><strong>数学</strong>：有限多项式→无穷级数，表达能力飞跃</p>
+<p><strong>人生</strong>：</p>
+<blockquote>
+<p><strong>坚持的力量是无穷的。</strong></p>
+</blockquote>
+<p><span class="katex-display"><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:2.9185em;vertical-align:-1.2671em;"></span><span class="mop op-limits"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.6514em;"><span style="top:-1.8829em;margin-left:0em;"><span class="pstrut" style="height:3.05em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">n</span><span class="mrel mtight">=</span><span class="mord mtight">1</span></span></span></span><span style="top:-3.05em;"><span class="pstrut" style="height:3.05em;"></span><span><span class="mop op-symbol large-op">∑</span></span></span><span style="top:-4.3em;margin-left:0em;"><span class="pstrut" style="height:3.05em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">∞</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:1.2671em;"><span></span></span></span></span></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord text"><span class="mord">small efforts</span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.8889em;vertical-align:-0.1944em;"></span><span class="mord text"><span class="mord">great achievement</span></span></span></span></span></span></p>
+<ul>
+<li>每天进步一点点（<span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.5806em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal">a</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">n</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>）</li>
+<li>日积月累（求和<span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord">Σ</span></span></span></span>）</li>
+<li>终成大器（收敛到目标）</li>
+</ul>
+<p><strong>关键</strong>：</p>
+<ul>
+<li>持续性（级数不断）</li>
+<li>方向性（单调或振荡收敛）</li>
+<li>收敛性（有明确目标）</li>
+</ul>
+</div>
+<hr />
+<div style="text-align: center; margin: 100px 0; font-size: 38px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); padding: 130px; color: white; border-radius: 30px; line-height: 3; box-shadow: 0 35px 90px rgba(0,0,0,0.6);">
+<h1 id="终章数学之美的赞歌"><a class="header" href="#终章数学之美的赞歌"><strong>终章：数学之美的赞歌</strong></a></h1>
+<h1 id="finale-ode-to-mathematical-beauty"><a class="header" href="#finale-ode-to-mathematical-beauty"><strong>FINALE: ODE TO MATHEMATICAL BEAUTY</strong></a></h1>
+</div>
+<hr />
+<div style="background: linear-gradient(135deg, #fffde7 0%, #fff9c4 100%); padding: 60px; border-radius: 25px; margin: 50px 0;">
+<h2 id="-幂级数之歌"><a class="header" href="#-幂级数之歌"><strong>🎵 幂级数之歌</strong></a></h2>
+<div style="font-size: 24px; font-style: italic; line-height: 2.3; margin: 40px 0;">
+<p><em>In the kingdom of functions,</em><br />
+<em>Where curves dance and equations sing,</em><br />
+<em>Power series weave their magic,</em><br />
+<em>Turning the infinite into the tangible.</em></p>
+<p><strong>在函数的王国里，</strong><br />
+<strong>曲线舞蹈，方程歌唱，</strong><br />
+<strong>幂级数编织着魔法，</strong><br />
+<strong>将无穷化为有形。</strong></p>
+<hr />
+<p><em>Each coefficient holds a secret,</em><br />
+<em>Each term tells a story.</em><br />
+<em>From the humble constant <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.5806em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal">a</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">0</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span></em><br />
+<em>To the soaring <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8144em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal">a</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">n</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mord"><span class="mord mathnormal">x</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.6644em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">n</span></span></span></span></span></span></span></span></span></span></span>,</em><br />
+<em>Together they paint infinity.</em></p>
+<p><strong>每个系数都藏着秘密，</strong><br />
+<strong>每一项都诉说故事。</strong><br />
+<strong>从朴素的常数项 <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.5806em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal">a</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">0</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span></strong><br />
+<strong>到高飞的 <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8144em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal">a</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">n</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mord"><span class="mord mathnormal">x</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.6644em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">n</span></span></span></span></span></span></span></span></span></span></span>，</strong><br />
+<strong>它们共同描绘无穷。</strong></p>
+<hr />
+<p><em>Euler stood on a mountaintop,</em><br />
+<em>And saw what others could not:</em><br />
+<em><strong>Growth and rotation are one,</strong></em><br />
+<em><strong>Real and imaginary unite,</strong></em><br />
+**<em>In the simple yet profound <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8247em;"></span><span class="mord"><span class="mord mathnormal">e</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8247em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">i</span><span class="mord mathnormal mtight">x</span></span></span></span></span></span></span></span></span></span></span></span>.</em></p>
+<p><strong>欧拉站在山巅，</strong><br />
+<strong>看到了别人看不到的：</strong><br />
+<em><strong>增长与旋转本为一体，</strong></em><br />
+<em><strong>实数与虚数合二为一，</strong></em><br />
+<em><strong>在简洁而深刻的 <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8247em;"></span><span class="mord"><span class="mord mathnormal">e</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8247em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">i</span><span class="mord mathnormal mtight">x</span></span></span></span></span></span></span></span></span></span></span></span> 中。</strong></em></p>
+<hr />
+<p><em>When <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal" style="margin-right:0.03588em;">π</span></span></span></span> met <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">e</span></span></span></span>,</em><br />
+<em>When <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6595em;"></span><span class="mord mathnormal">i</span></span></span></span> joined the dance,</em><br />
+<em>When <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">1</span></span></span></span> and <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">0</span></span></span></span> witnessed,</em><br />
+<em><strong>The universe held its breath.</strong></em></p>
+<p><strong>当 <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal" style="margin-right:0.03588em;">π</span></span></span></span> 遇见 <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">e</span></span></span></span>，</strong><br />
+<strong>当 <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6595em;"></span><span class="mord mathnormal">i</span></span></span></span> 加入舞蹈，</strong><br />
+<strong>当 <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">1</span></span></span></span> 和 <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">0</span></span></span></span> 见证，</strong><br />
+<em><strong>宇宙屏住了呼吸。</strong></em></p>
+<p><span class="katex-display"><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.958em;vertical-align:-0.0833em;"></span><span class="mord"><span class="mord mathnormal">e</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8747em;"><span style="top:-3.113em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.03588em;">iπ</span></span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">1</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">0</span></span></span></span></span></p>
+<p><strong>Beauty. Truth. Eternity.</strong></p>
+<hr />
+<p><em>So we study power series,</em><br />
+<em>Not just to solve equations,</em><br />
+<em>But to glimpse the architecture</em><br />
+<em>Of the mathematical universe.</em></p>
+<p><strong>所以我们学习幂级数，</strong><br />
+<strong>不仅仅是为了解方程，</strong><br />
+<strong>更是为了窥见</strong><br />
+<strong>数学宇宙的建筑学。</strong></p>
+<hr />
+<p><em>In every <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.104em;vertical-align:-0.2997em;"></span><span class="mop"><span class="mop op-symbol small-op" style="position:relative;top:0em;">∑</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.8043em;"><span style="top:-2.4003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">n</span><span class="mrel mtight">=</span><span class="mord mtight">0</span></span></span></span><span style="top:-3.2029em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">∞</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2997em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="mord mathnormal">a</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">n</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mord"><span class="mord mathnormal">x</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.6644em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">n</span></span></span></span></span></span></span></span></span></span></span>,</em><br />
+<em>There is a world waiting to be discovered.</em><br />
+<em>In every convergence radius <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.00773em;">R</span></span></span></span>,</em><br />
+<em>There is a story waiting to be told.</em></p>
+<p><strong>在每个 <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.104em;vertical-align:-0.2997em;"></span><span class="mop"><span class="mop op-symbol small-op" style="position:relative;top:0em;">∑</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.8043em;"><span style="top:-2.4003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">n</span><span class="mrel mtight">=</span><span class="mord mtight">0</span></span></span></span><span style="top:-3.2029em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">∞</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2997em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="mord mathnormal">a</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">n</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mord"><span class="mord mathnormal">x</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.6644em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">n</span></span></span></span></span></span></span></span></span></span></span> 中，</strong><br />
+<strong>有一个世界等待被发现。</strong><br />
+<strong>在每个收敛半径 <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.00773em;">R</span></span></span></span> 里，</strong><br />
+<strong>有一个故事等待被讲述。</strong></p>
+<hr />
+<p><em><strong>May you always see the infinite in the finite,</strong></em><br />
+<em><strong>The complex in the simple,</strong></em><br />
+<em><strong>The beauty in the formula.</strong></em></p>
+<p><em><strong>愿你永远在有限中看到无穷，</strong></em><br />
+<em><strong>在简单中看到复杂，</strong></em><br />
+<em><strong>在公式中看到美。</strong></em></p>
+</div>
+</div>
+<hr />
+<div style="background: #e8f5e9; padding: 60px; border-left: 10px solid #4caf50; margin: 50px 0;">
+<h2 id="-最后的勉励"><a class="header" href="#-最后的勉励"><strong>📚 最后的勉励</strong></a></h2>
+<p>亲爱的学习者：</p>
+<p>当你合上这一章的书页，<br />
+请记住：</p>
+<p><strong>你所学的不仅仅是：</strong></p>
+<ul>
+<li>如何计算收敛半径</li>
+<li>如何展开函数</li>
+<li>如何应用欧拉公式</li>
+</ul>
+<p><strong>你所获得的更是：</strong></p>
+<ul>
+<li><strong>一种看待无穷的方式</strong></li>
+<li><strong>一种逼近真理的方法</strong></li>
+<li><strong>一种欣赏美的眼光</strong></li>
+</ul>
+<hr />
+<p><strong>幂级数教会我们：</strong></p>
+<p>✨ <strong>精确可以通过逼近达到</strong><br />
+✨ <strong>整体蕴藏在局部之中</strong><br />
+✨ <strong>简单形式可以表达复杂内容</strong><br />
+✨ <strong>不同的世界可以统一</strong></p>
+<hr />
+<p><strong>记住这些美丽的公式：</strong></p>
+<p><span class="katex-display"><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7144em;"></span><span class="mord"><span class="mord mathnormal">e</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.7144em;"><span style="top:-3.113em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">x</span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:2.9185em;vertical-align:-1.2671em;"></span><span class="mop op-limits"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.6514em;"><span style="top:-1.8829em;margin-left:0em;"><span class="pstrut" style="height:3.05em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">n</span><span class="mrel mtight">=</span><span class="mord mtight">0</span></span></span></span><span style="top:-3.05em;"><span class="pstrut" style="height:3.05em;"></span><span><span class="mop op-symbol large-op">∑</span></span></span><span style="top:-4.3em;margin-left:0em;"><span class="pstrut" style="height:3.05em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">∞</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:1.2671em;"><span></span></span></span></span></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.3414em;"><span style="top:-2.314em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathnormal">n</span><span class="mclose">!</span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.677em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord"><span class="mord mathnormal">x</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.6644em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">n</span></span></span></span></span></span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.686em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span></span></span></p>
+<p><span class="katex-display"><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8747em;"></span><span class="mord"><span class="mord mathnormal">e</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8747em;"><span style="top:-3.113em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">i</span><span class="mord mathnormal mtight">x</span></span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6667em;vertical-align:-0.0833em;"></span><span class="mop">cos</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal">x</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6679em;"></span><span class="mord mathnormal">i</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mop">sin</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal">x</span></span></span></span></span></p>
+<p><span class="katex-display"><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.958em;vertical-align:-0.0833em;"></span><span class="mord"><span class="mord mathnormal">e</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8747em;"><span style="top:-3.113em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.03588em;">iπ</span></span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">1</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">0</span></span></span></span></span></p>
+<p>它们不仅仅是公式，<br />
+它们是<strong>数学诗歌</strong>，<br />
+是<strong>宇宙韵律</strong>，<br />
+是<strong>真理的回响</strong>。</p>
+<hr />
+<p><strong>当你未来：</strong></p>
+<ul>
+<li>在工程中设计系统</li>
+<li>在科研中探索未知</li>
+<li>在教育中启迪后人</li>
+<li>在生活中追求完美</li>
+</ul>
+<p><strong>请想起幂级数的智慧：</strong></p>
+<blockquote>
+<p><strong>持续积累，终成大器</strong><br />
+<strong>渐进逼近，无限接近真理</strong><br />
+<strong>局部完善，整体自然和谐</strong></p>
+</blockquote>
+<hr />
+<p><strong>数学分析的旅程还在继续</strong>，<br />
+<strong>但幂级数这一章已为你打开了通向更高数学的大门。</strong></p>
+<p><strong>愿你：</strong></p>
+<ul>
+<li>以级数的精神，持续学习</li>
+<li>以收敛的智慧，选择方向</li>
+<li>以欧拉的勇气，探索未知</li>
+<li>以数学的美感，欣赏世界</li>
+</ul>
+</div>
+<hr />
+<div style="text-align: center; margin: 120px 0; font-size: 52px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); padding: 180px; color: white; border-radius: 35px; line-height: 3.2; box-shadow: 0 50px 120px rgba(0,0,0,0.7);">
+<p><strong>∞</strong></p>
+<p><strong>SUMMA SUMMARUM</strong></p>
+<p><strong>级数之巅</strong></p>
+<hr />
+<div style="font-size: 32px; margin: 80px 0;">
+<p><em>"God made the integers,</em><br />
+<em>all else is the work of man."</em><br />
+— Leopold Kronecker</p>
+<p><strong>"上帝创造了整数，</strong><br />
+<strong>其余都是人类的工作。"</strong><br />
+— 利奥波德·克罗内克</p>
+<hr />
+<p><em>But with power series,</em><br />
+<em>We humans created</em><br />
+<em><strong>A language to speak with God.</strong></em></p>
+<p><strong>但有了幂级数，</strong><br />
+<strong>我们人类创造了</strong><br />
+<em><strong>一种与上帝对话的语言。</strong></em></p>
+</div>
+<hr />
+<div style="font-size: 40px; margin: 100px 0; letter-spacing: 15px;">
+<p><strong>∑ = ∞</strong></p>
+</div>
+<hr />
+<div style="font-size: 28px; font-style: italic; opacity: 0.95;">
+<p><strong>May the power of series be with you,</strong><br />
+<strong>now and forever.</strong></p>
+<p><strong>愿级数的力量与你同在，</strong><br />
+<strong>今时直到永远。</strong></p>
+</div>
+</div>
+<hr />
+<div style="background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%); padding: 80px; text-align: center; border-radius: 30px; margin: 100px 0; box-shadow: 0 20px 60px rgba(0,0,0,0.25);">
+<p><strong>© 2024 Complete Knowledge System</strong><br />
+<strong>第十四章：幂级数 POWER SERIES</strong></p>
+<hr />
+<h2 id="-全章统计"><a class="header" href="#-全章统计"><strong>📊 全章统计</strong></a></h2>
+<p>✅ <strong>三大节</strong>：幂级数基础 + 函数展开 + 欧拉公式<br />
+✅ <strong>核心定理</strong>：15个关键定理<br />
+✅ <strong>基本公式</strong>：18个必背公式<br />
+✅ <strong>思想方法</strong>：6种展开技巧<br />
+✅ <strong>典型例题</strong>：40+详解<br />
+✅ <strong>习题训练</strong>：100+道题目</p>
+<hr />
+<h2 id="-学习成果检验"><a class="header" href="#-学习成果检验"><strong>🎯 学习成果检验</strong></a></h2>
+<p>完成本章学习后，你应该能够：</p>
+<ul>
+<li><input disabled="" type="checkbox"/>
+计算幂级数的收敛半径和收敛域</li>
+<li><input disabled="" type="checkbox"/>
+判断幂级数的一致收敛性</li>
+<li><input disabled="" type="checkbox"/>
+进行幂级数的逐项求导和积分</li>
+<li><input disabled="" type="checkbox"/>
+默写六大基本函数的展开式</li>
+<li><input disabled="" type="checkbox"/>
+用多种方法展开函数为幂级数</li>
+<li><input disabled="" type="checkbox"/>
+应用Taylor定理估计误差</li>
+<li><input disabled="" type="checkbox"/>
+理解并应用欧拉公式</li>
+<li><input disabled="" type="checkbox"/>
+推导三角函数的多倍角公式</li>
+<li><input disabled="" type="checkbox"/>
+计算复数的n次方根</li>
+<li><input disabled="" type="checkbox"/>
+理解幂级数在数学中的地位</li>
+</ul>
+<hr />
+<h2 id="-本章核心价值"><a class="header" href="#-本章核心价值"><strong>🌟 本章核心价值</strong></a></h2>
+<p>这一章不仅是<strong>数学分析的高潮</strong>，<br />
+更是通向<strong>高等数学殿堂的阶梯</strong>：</p>
+<p>✨ <strong>连接有限与无穷</strong><br />
+✨ <strong>统一代数与分析</strong><br />
+✨ <strong>沟通实数与复数</strong><br />
+✨ <strong>融合理论与应用</strong></p>
+<hr />
+<p><strong>你已经掌握了</strong><br />
+<strong>数学王冠上的一颗明珠！</strong></p>
+<p><strong>You have mastered</strong><br />
+<strong>one of the jewels in the crown of mathematics!</strong></p>
+<hr />
+<div style="font-size: 56px; margin: 80px 0; font-weight: bold;">
+<p>🎓 <strong>CONGRATULATIONS!</strong> 🎓</p>
+<p><strong>恭喜你完成第十四章！</strong></p>
+</div>
+<hr />
+<p>🌟 <strong>FINIS CORONAT OPUS</strong> 🌟<br />
+<strong>结局为工作加冕</strong></p>
+<p><strong>The End Crowns the Work</strong></p>
+</div>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../../math/fifteen/3.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next prefetch" href="../../math/fiveteen/1.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../../math/fifteen/3.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next prefetch" href="../../math/fiveteen/1.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+        <!-- Livereload script (if served using the cli tool) -->
+        <script>
+            const wsProtocol = location.protocol === 'https:' ? 'wss:' : 'ws:';
+            const wsAddress = wsProtocol + "//" + location.host + "/" + "__livereload";
+            const socket = new WebSocket(wsAddress);
+            socket.onmessage = function (event) {
+                if (event.data === "reload") {
+                    socket.close();
+                    location.reload();
+                }
+            };
+
+            window.onbeforeunload = function() {
+                socket.close();
+            }
+        </script>
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="../../elasticlunr.min.js"></script>
+        <script src="../../mark.min.js"></script>
+        <script src="../../searcher.js"></script>
+
+        <script src="../../clipboard.min.js"></script>
+        <script src="../../highlight.js"></script>
+        <script src="../../book.js"></script>
+
+        <!-- Custom JS scripts -->
+        <script src="../../theme/extra.js"></script>
+        <script src="../../theme/pagetoc.js"></script>
+        <script src="../../mermaid.min.js"></script>
+        <script src="../../mermaid-init.js"></script>
+
+
+
+    </div>
+    </body>
+</html>
